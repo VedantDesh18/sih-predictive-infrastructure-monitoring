@@ -1,0 +1,66 @@
+# Dependencies
+node_modules/
+**/node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# IDE
+.vscode/
+.idea/
+.cursor/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Next.js
+.next/
+**/.next/
+out/
+
+# Python
+*.so
+.Python
+venv/
+.venv/
+pip-log.txt
+
+# Testing & Linting
+.coverage
+htmlcov/
+.pytest_cache/
+**/.pytest_cache/
+.ruff_cache/
+**/.ruff_cache/
+
+# Docker
+*.log
+
+# Alembic
+alembic/versions/__pycache__/
+
+# ML artifacts (future)
+*.pkl
+*.joblib
+*.parquet
+mlruns/
+
+# Data (managed separately)
+data/raw/*
+data/processed/*
+data/features/*
+!data/**/.gitkeep
+

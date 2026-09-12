@@ -1,0 +1,113 @@
+@import "tailwindcss";
+
+:root {
+  --background: #07111f;
+  --foreground: #e2e8f0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.panel-card {
+  border: 1px solid rgba(71, 102, 136, 0.43);
+  border-radius: 14px;
+  background: linear-gradient(
+    145deg,
+    rgba(16, 35, 56, 0.93),
+    rgba(10, 25, 42, 0.98)
+  );
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.16);
+}
+.section-title {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  color: #f1f5f9;
+}
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 9px;
+  padding: 10px 12px;
+  color: #94a3b8;
+  transition: 0.15s ease;
+}
+.nav-link:hover {
+  background: rgba(148, 163, 184, 0.08);
+  color: #e2e8f0;
+}
+.nav-link-active {
+  background: rgba(34, 211, 238, 0.11);
+  color: #a5f3fc;
+  font-weight: 700;
+}
+.nav-link span {
+  width: 16px;
+  text-align: center;
+  color: #67e8f9;
+}
+.action-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  border-radius: 9px;
+  background: #22d3ee;
+  padding: 10px 14px;
+  font-size: 12px;
+  font-weight: 800;
+  color: #082032;
+  transition: 0.15s ease;
+}
+.action-button:hover {
+  background: #a5f3fc;
+  transform: translateY(-1px);
+}
+.filter-control {
+  min-width: 115px;
+  border: 1px solid rgba(71, 102, 136, 0.62);
+  border-radius: 7px;
+  background: #0b192a;
+  padding: 8px 28px 8px 9px;
+  color: #cbd5e1;
+  font-size: 11px;
+  outline: none;
+}
+.filter-control:focus {
+  border-color: #22d3ee;
+}
+.filter-control option {
+  background: #0b192a;
+}
+.pulse-dot {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #67e8f9;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.11em;
+}
+.pulse-dot::before {
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: #22d3ee;
+  box-shadow: 0 0 10px #22d3ee;
+}
