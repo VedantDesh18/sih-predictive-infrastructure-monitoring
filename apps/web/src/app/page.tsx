@@ -37,23 +37,20 @@ function StatCard({
   tone?: "cyan" | "rose" | "amber" | "emerald";
 }) {
   const toneClass = {
-    cyan: "text-cyan-300",
-    rose: "text-rose-300",
-    amber: "text-amber-200",
-    emerald: "text-emerald-300",
+    cyan: "text-[#006b9a]",
+    rose: "text-[#b74643]",
+    amber: "text-[#a66b00]",
+    emerald: "text-[#16734b]",
   }[tone];
   return (
-    <article className="panel-card relative overflow-hidden p-5">
-      <div
-        className={`absolute left-0 top-0 h-1 w-full ${tone === "rose" ? "bg-rose-400" : tone === "amber" ? "bg-amber-400" : tone === "emerald" ? "bg-emerald-400" : "bg-cyan-400"}`}
-      />
-      <p className="text-[11px] font-bold uppercase tracking-[0.14em] text-slate-500">
+    <article className={`panel-card stat-card stat-card-${tone} p-5 pl-6`}>
+      <p className="text-[11px] font-bold uppercase tracking-[0.1em] text-slate-600">
         {label}
       </p>
       <p className={`mt-3 text-2xl font-semibold tracking-tight ${toneClass}`}>
         {value}
       </p>
-      <p className="mt-2 text-xs text-slate-500">{detail}</p>
+      <p className="mt-2 text-xs text-slate-600">{detail}</p>
     </article>
   );
 }
@@ -106,12 +103,14 @@ export default function Home() {
     () => ({
       tooltip: {
         trigger: "item",
-        backgroundColor: "#12243a",
-        textStyle: { color: "#e2e8f0" },
+        backgroundColor: "#ffffff",
+        borderColor: "#cbd5e1",
+        borderWidth: 1,
+        textStyle: { color: "#1e293b" },
       },
       legend: {
         bottom: 0,
-        textStyle: { color: "#94a3b8", fontSize: 10 },
+        textStyle: { color: "#475569", fontSize: 10 },
         itemWidth: 9,
         itemHeight: 9,
       },
@@ -122,7 +121,7 @@ export default function Home() {
           center: ["50%", "43%"],
           label: { show: false },
           itemStyle: {
-            borderColor: "#0b1828",
+            borderColor: "#ffffff",
             borderWidth: 4,
             borderRadius: 4,
           },
@@ -141,21 +140,23 @@ export default function Home() {
       grid: { left: 38, right: 14, top: 22, bottom: 28 },
       tooltip: {
         trigger: "axis",
-        backgroundColor: "#12243a",
-        textStyle: { color: "#e2e8f0" },
+        backgroundColor: "#ffffff",
+        borderColor: "#cbd5e1",
+        borderWidth: 1,
+        textStyle: { color: "#1e293b" },
       },
       xAxis: {
         type: "category",
         data: portfolio?.portfolio_trend.map((point) => point.month) ?? [],
-        axisLine: { lineStyle: { color: "#25415e" } },
-        axisLabel: { color: "#94a3b8" },
+        axisLine: { lineStyle: { color: "#cbd5e1" } },
+        axisLabel: { color: "#475569" },
       },
       yAxis: {
         type: "value",
         min: 0,
         max: 100,
-        splitLine: { lineStyle: { color: "#1a3049" } },
-        axisLabel: { color: "#94a3b8" },
+        splitLine: { lineStyle: { color: "#e2e8f0" } },
+        axisLabel: { color: "#475569" },
       },
       series: [
         {
@@ -163,9 +164,9 @@ export default function Home() {
           smooth: true,
           data: portfolio?.portfolio_trend.map((point) => point.risk) ?? [],
           symbolSize: 7,
-          lineStyle: { color: "#22d3ee", width: 3 },
-          itemStyle: { color: "#67e8f9" },
-          areaStyle: { color: "rgba(34,211,238,.11)" },
+          lineStyle: { color: "#008fc4", width: 3 },
+          itemStyle: { color: "#00a4d6" },
+          areaStyle: { color: "rgba(0,143,196,.12)" },
         },
       ],
     }),
@@ -177,8 +178,8 @@ export default function Home() {
       xAxis: {
         type: "value",
         max: 100,
-        splitLine: { lineStyle: { color: "#1a3049" } },
-        axisLabel: { color: "#94a3b8" },
+        splitLine: { lineStyle: { color: "#e2e8f0" } },
+        axisLabel: { color: "#475569" },
       },
       yAxis: {
         type: "category",
@@ -187,7 +188,7 @@ export default function Home() {
             item.name.replace("Ministry of ", "")
           ) ?? [],
         axisLabel: {
-          color: "#cbd5e1",
+          color: "#334155",
           fontSize: 10,
           width: 118,
           overflow: "truncate",
@@ -207,7 +208,7 @@ export default function Home() {
                     ? "#fb7185"
                     : item.risk >= 65
                       ? "#fb923c"
-                      : "#22d3ee",
+                      : "#008fc4",
                 borderRadius: [0, 4, 4, 0],
               },
             })) ?? [],
@@ -215,7 +216,7 @@ export default function Home() {
           label: {
             show: true,
             position: "right",
-            color: "#94a3b8",
+            color: "#475569",
             fontSize: 10,
           },
         },
@@ -229,21 +230,21 @@ export default function Home() {
       xAxis: {
         type: "category",
         data: portfolio?.sector_comparison.map((item) => item.name) ?? [],
-        axisLabel: { color: "#94a3b8", fontSize: 9, rotate: 28 },
-        axisLine: { lineStyle: { color: "#25415e" } },
+        axisLabel: { color: "#475569", fontSize: 9, rotate: 28 },
+        axisLine: { lineStyle: { color: "#cbd5e1" } },
       },
       yAxis: {
         type: "value",
         max: 100,
-        splitLine: { lineStyle: { color: "#1a3049" } },
-        axisLabel: { color: "#94a3b8" },
+        splitLine: { lineStyle: { color: "#e2e8f0" } },
+        axisLabel: { color: "#475569" },
       },
       series: [
         {
           type: "bar",
           data: portfolio?.sector_comparison.map((item) => item.risk) ?? [],
           barWidth: "48%",
-          itemStyle: { color: "#818cf8", borderRadius: [4, 4, 0, 0] },
+          itemStyle: { color: "#3d88bd", borderRadius: [3, 3, 0, 0] },
         },
       ],
     }),
@@ -253,7 +254,7 @@ export default function Home() {
   if (error)
     return (
       <DashboardShell>
-        <div className="m-8 panel-card p-8 text-rose-300">
+        <div className="m-8 panel-card p-8 text-rose-700">
           The monitoring API could not be reached. Start the FastAPI service and
           refresh this dashboard.
         </div>
@@ -262,7 +263,7 @@ export default function Home() {
   if (!statistics || !portfolio)
     return (
       <DashboardShell>
-        <div className="grid min-h-screen place-items-center text-sm tracking-wide text-cyan-300">
+        <div className="grid min-h-[60vh] place-items-center text-sm tracking-wide text-[#006b9a]">
           INITIALISING PORTFOLIO INTELLIGENCE…
         </div>
       </DashboardShell>
@@ -270,20 +271,20 @@ export default function Home() {
 
   return (
     <DashboardShell>
-      <header className="flex flex-col gap-4 border-b border-slate-700/50 bg-[#091827]/80 px-5 py-5 backdrop-blur md:flex-row md:items-center md:justify-between md:px-8">
+      <header className="flex flex-col gap-4 border-b border-slate-200 bg-white px-5 py-5 md:flex-row md:items-center md:justify-between md:px-8">
         <div>
-          <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-cyan-300">
+          <p className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#006b9a]">
             Infrastructure Command Center
           </p>
-          <h1 className="mt-1 text-xl font-semibold tracking-tight text-white">
+          <h1 className="mt-1 text-xl font-semibold tracking-tight text-[#173b5d]">
             Portfolio Risk Intelligence
           </h1>
         </div>
         <div className="flex items-center gap-3">
-          <span className="rounded-full border border-amber-300/25 bg-amber-300/10 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-200">
+          <span className="rounded border border-amber-200 bg-amber-50 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-amber-800">
             Synthetic Demonstration Data
           </span>
-          <span className="hidden text-xs text-slate-500 sm:inline">
+          <span className="hidden text-xs italic text-slate-500 sm:inline">
             Updated Jul 2026 · Prototype
           </span>
         </div>
@@ -291,10 +292,10 @@ export default function Home() {
       <section className="px-5 py-6 md:px-8">
         <div className="mb-6 flex flex-col justify-between gap-3 xl:flex-row xl:items-end">
           <div>
-            <h2 className="text-2xl font-semibold text-white">
+            <h2 className="text-2xl font-semibold text-[#173b5d]">
               Early warning, before project failure
             </h2>
-            <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-400">
+            <p className="mt-1 max-w-2xl text-sm leading-6 text-slate-600">
               A transparent predictive-risk prototype that identifies worsening
               project trajectories and exposes the operational drivers behind
               each warning.
@@ -357,7 +358,7 @@ export default function Home() {
           <div className="mb-1 flex items-center justify-between">
             <div>
               <h3 className="section-title">Portfolio risk trajectory</h3>
-              <p className="mt-1 text-xs text-slate-500">
+              <p className="mt-1 text-xs text-slate-600">
                 Average calculated risk across reporting periods
               </p>
             </div>
@@ -375,22 +376,22 @@ export default function Home() {
               <Link
                 href={`/projects/${project.project_id}`}
                 key={project.project_id}
-                className="group flex items-center gap-3 rounded-lg px-2 py-2.5 transition hover:bg-white/[.035]"
+                className="group flex items-center gap-3 rounded px-2 py-2.5 transition hover:bg-[#eff8fc]"
               >
-                <span className="w-4 text-xs text-slate-600">0{index + 1}</span>
-                <span className="min-w-0 flex-1 truncate text-xs font-medium text-slate-200 group-hover:text-cyan-200">
+                <span className="w-4 text-xs text-slate-400">0{index + 1}</span>
+                <span className="min-w-0 flex-1 truncate text-xs font-medium text-slate-700 group-hover:text-[#006b9a]">
                   {project.project_name}
                 </span>
-                <span className="text-sm font-semibold text-rose-300">
+                <span className="text-sm font-semibold text-rose-700">
                   {project.overall_risk}
                 </span>
-                <span className="text-slate-600">›</span>
+                <span className="text-slate-400">›</span>
               </Link>
             ))}
           </div>
           <Link
             href="#portfolio-table"
-            className="mt-3 block border-t border-slate-700/50 pt-3 text-center text-xs font-semibold text-cyan-300"
+            className="mt-3 block border-t border-slate-200 pt-3 text-center text-xs font-semibold text-[#006b9a]"
           >
             View risk register →
           </Link>
@@ -406,16 +407,16 @@ export default function Home() {
       </section>
       <section id="portfolio-table" className="px-5 pb-10 md:px-8">
         <div className="panel-card overflow-hidden">
-          <div className="border-b border-slate-700/50 px-5 py-5">
+          <div className="border-b border-slate-200 px-5 py-5">
             <div className="flex flex-col justify-between gap-3 lg:flex-row lg:items-center">
               <div>
                 <h3 className="section-title">Project risk register</h3>
-                <p className="mt-1 text-xs text-slate-500">
+                <p className="mt-1 text-xs text-slate-600">
                   Sorted by calculated overall risk · {filteredProjects.length}{" "}
                   projects shown
                 </p>
               </div>
-              <div className="grid grid-cols-2 gap-2 sm:flex">
+              <div className="grid grid-cols-2 gap-3 sm:flex">
                 <Filter
                   value={ministry}
                   onChange={setMinistry}
@@ -450,7 +451,7 @@ export default function Home() {
           </div>
           <div className="max-h-[760px] overflow-auto">
             <table className="w-full min-w-[1080px] text-left">
-              <thead className="sticky top-0 z-10 bg-[#0d1d2f]">
+              <thead className="sticky top-0 z-10 bg-[#eef6fa]">
                 <tr>
                   {[
                     "Project",
@@ -465,7 +466,7 @@ export default function Home() {
                   ].map((item) => (
                     <th
                       key={item}
-                      className="px-4 py-3 text-[10px] font-bold uppercase tracking-[0.12em] text-slate-500"
+                      className="px-4 py-3 text-[10px] font-bold uppercase tracking-[0.1em] text-[#36536c]"
                     >
                       {item}
                     </th>
@@ -476,12 +477,12 @@ export default function Home() {
                 {filteredProjects.map((project) => (
                   <tr
                     key={project.project_id}
-                    className="border-t border-slate-800/80 transition hover:bg-cyan-300/[.025]"
+                    className="border-t border-slate-200 transition hover:bg-[#f3faff]"
                   >
                     <td className="px-4 py-3">
                       <Link
                         href={`/projects/${project.project_id}`}
-                        className="block max-w-[245px] text-sm font-semibold text-slate-100 hover:text-cyan-300"
+                        className="block max-w-[245px] text-sm font-semibold text-slate-800 hover:text-[#006b9a]"
                       >
                         {project.project_name}
                       </Link>
@@ -489,10 +490,10 @@ export default function Home() {
                         {project.project_id}
                       </span>
                     </td>
-                    <td className="max-w-[200px] truncate px-4 text-xs text-slate-400">
+                    <td className="max-w-[200px] truncate px-4 text-xs text-slate-600">
                       {project.ministry.replace("Ministry of ", "")}
                     </td>
-                    <td className="px-4 text-xs text-slate-400">
+                    <td className="px-4 text-xs text-slate-600">
                       {project.sector}
                     </td>
                     <ScoreCell value={project.risk.scores.cost_risk} />
@@ -510,11 +511,11 @@ export default function Home() {
                     </td>
                     <td className="px-4">
                       {project.risk.alerts.length ? (
-                        <span className="text-xs text-rose-300">
+                        <span className="text-xs text-rose-700">
                           {project.risk.alerts[0].type.replace(" WARNING", "")}
                         </span>
                       ) : (
-                        <span className="text-xs text-slate-600">—</span>
+                        <span className="text-xs text-slate-400">—</span>
                       )}
                     </td>
                   </tr>
@@ -540,19 +541,22 @@ function Filter({
   onChange: (value: string) => void;
 }) {
   return (
-    <select
-      aria-label={label}
-      value={value}
-      onChange={(event) => onChange(event.target.value)}
-      className="filter-control"
-    >
-      <option value="ALL">All {label}</option>
-      {options.map((option) => (
-        <option key={option} value={option}>
-          {option.replace("Ministry of ", "")}
-        </option>
-      ))}
-    </select>
+    <label className="filter-field">
+      <span className="filter-label">{label}</span>
+      <select
+        aria-label={label}
+        value={value}
+        onChange={(event) => onChange(event.target.value)}
+        className="filter-control"
+      >
+        <option value="ALL">All {label}</option>
+        {options.map((option) => (
+          <option key={option} value={option}>
+            {option.replace("Ministry of ", "")}
+          </option>
+        ))}
+      </select>
+    </label>
   );
 }
 function ScoreCell({
@@ -564,7 +568,7 @@ function ScoreCell({
 }) {
   return (
     <td
-      className={`px-4 text-sm font-semibold ${strong ? (value >= 80 ? "text-rose-300" : value >= 65 ? "text-orange-300" : "text-cyan-200") : "text-slate-300"}`}
+      className={`px-4 text-sm font-semibold ${strong ? (value >= 80 ? "text-rose-700" : value >= 65 ? "text-orange-700" : "text-[#006b9a]") : "text-slate-700"}`}
     >
       {value}
     </td>
