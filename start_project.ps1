@@ -18,7 +18,7 @@ $apiJob = Start-Job -ArgumentList $repositoryRoot, $python -ScriptBlock {
 $webJob = Start-Job -ArgumentList $repositoryRoot -ScriptBlock {
     param($root)
     Set-Location "$root\apps\web"
-    npm run dev
+    npm.cmd run dev
 }
 
 Write-Host "API starting on http://localhost:8000/docs" -ForegroundColor Cyan
