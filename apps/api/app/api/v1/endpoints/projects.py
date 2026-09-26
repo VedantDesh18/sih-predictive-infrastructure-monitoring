@@ -68,23 +68,29 @@ async def get_project(project_id: str, db: DatabaseSession) -> dict[str, Any]:
 async def get_project_risk(project_id: str, db: DatabaseSession) -> dict[str, Any]:
     project = await _find_project(project_id, db)
     risk = calculate_risk(project)
-    return {
+    res = {
         "project_id": project.paimana_project_id,
         "project_name": project.name,
         "data_source": SYNTHETIC_LABEL,
         **risk,
     }
+    if project.ml_risk_predictions:
+        res["ml_risk"] = project.ml_risk_predictions
+    return res
 
 
 @projects_router.get("/projects/{project_id}/alerts")
 async def get_project_alerts(project_id: str, db: DatabaseSession) -> dict[str, Any]:
     project = await _find_project(project_id, db)
-    return {
+    res = {
         "project_id": project.paimana_project_id,
         "project_name": project.name,
         "data_source": SYNTHETIC_LABEL,
         "alerts": calculate_risk(project)["alerts"],
     }
+    if project.ml_alerts:
+        res["ml_alerts"] = project.ml_alerts
+    return res
 
 
 @projects_router.get("/risk/portfolio")

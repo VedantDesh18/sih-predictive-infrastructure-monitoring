@@ -1,0 +1,20 @@
+{
+  "version": "1.0.0",
+  "threshold_values": {
+    "low_max_inclusive": 0.4404571359327144,
+    "medium_max_inclusive": 0.519481878774886,
+    "high_max_inclusive": 0.6469738234373282,
+    "critical": "> 0.646973823437"
+  },
+  "classification": {
+    "LOW": "overall_risk_probability <= 0.440457135933",
+    "MEDIUM": "0.440457135933 < overall_risk_probability <= 0.519481878775",
+    "HIGH": "0.519481878775 < overall_risk_probability <= 0.646973823437",
+    "CRITICAL": "overall_risk_probability > 0.646973823437"
+  },
+  "calculation_method": "Empirical 25th/50th/75th percentiles of strictly nested GroupKFold out-of-fold overall-risk probabilities. Each outer-fold meta prediction uses inner GroupKFold base OOF predictions; projects do not overlap between outer train/validation. No fixed 25/50/75 probability cutoffs are assumed.",
+  "source_population": "Completed-project prediction snapshots from completed_cleaned.csv with valid project-level outcome labels; probability distribution is nested GroupKFold out-of-fold.",
+  "completed_projects_used": 100,
+  "prediction_rows_used": 7666,
+  "date_generated_utc": "2026-09-25T19:22:42.851993+00:00"
+}

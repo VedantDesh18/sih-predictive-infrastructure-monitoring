@@ -1,0 +1,330 @@
+{
+  "model_version": "2.0.0",
+  "training_date_utc": "2026-09-25T19:22:43.129641+00:00",
+  "training_datasets": [
+    "completed_cleaned.csv"
+  ],
+  "monitoring_dataset": "ongoing_cleaned.csv",
+  "training_projects": 100,
+  "training_observations": 7666,
+  "completed_input_rows": 7766,
+  "feature_count": 58,
+  "feature_names": [
+    "original_cost_crore",
+    "revised_budget_crore",
+    "revised_budget_to_original_ratio",
+    "cumulative_expenditure_crore",
+    "expenditure_ratio",
+    "expenditure_lag_1m_crore",
+    "expenditure_lag_3m_crore",
+    "expenditure_lag_6m_crore",
+    "expenditure_velocity_crore_per_month",
+    "expenditure_growth_1m_pct",
+    "expenditure_growth_3m_pct",
+    "expenditure_3m_trend_crore_per_month",
+    "expenditure_6m_trend_crore_per_month",
+    "expenditure_rolling_mean_6m_crore",
+    "expenditure_rolling_volatility_6m_crore",
+    "expenditure_observations_6m",
+    "months_since_expenditure_update",
+    "physical_progress_pct",
+    "physical_progress_lag_1m_pct",
+    "physical_progress_lag_3m_pct",
+    "physical_progress_lag_6m_pct",
+    "physical_progress_velocity_pct_per_month",
+    "physical_progress_acceleration_pct_per_month2",
+    "physical_progress_rolling_trend_6m_pct_per_month",
+    "milestone_progress_pct",
+    "milestone_progress_lag_1m_pct",
+    "milestone_progress_lag_3m_pct",
+    "milestone_progress_lag_6m_pct",
+    "milestone_progress_velocity_pct_per_month",
+    "milestone_progress_acceleration_pct_per_month2",
+    "milestone_progress_rolling_trend_6m_pct_per_month",
+    "progress_current_pct",
+    "progress_velocity_pct_per_month",
+    "progress_acceleration_pct_per_month2",
+    "progress_rolling_trend_6m_pct_per_month",
+    "months_since_physical_progress_update",
+    "months_since_milestone_progress_update",
+    "months_since_progress_update",
+    "planned_duration_months",
+    "elapsed_since_approval_months",
+    "schedule_slippage_months",
+    "original_doc_slippage_months",
+    "revised_doc_slippage_months",
+    "revised_doc_shift_from_original_months",
+    "revised_doc_movement_1m_months",
+    "delay_growth_1m_months",
+    "delay_growth_3m_months",
+    "delay_growth_6m_months",
+    "milestone_slippage_vs_elapsed_pct_points",
+    "months_since_status_update",
+    "status_changes_6m",
+    "status_change_frequency_6m",
+    "status_recently_changed",
+    "history_months_available",
+    "lookback_observation_count_6m",
+    "Sector",
+    "Agency",
+    "Project_Status"
+  ],
+  "preprocessed_feature_count": 113,
+  "preprocessed_feature_names": [
+    "original_cost_crore",
+    "revised_budget_crore",
+    "revised_budget_to_original_ratio",
+    "cumulative_expenditure_crore",
+    "expenditure_ratio",
+    "expenditure_lag_1m_crore",
+    "expenditure_lag_3m_crore",
+    "expenditure_lag_6m_crore",
+    "expenditure_velocity_crore_per_month",
+    "expenditure_growth_1m_pct",
+    "expenditure_growth_3m_pct",
+    "expenditure_3m_trend_crore_per_month",
+    "expenditure_6m_trend_crore_per_month",
+    "expenditure_rolling_mean_6m_crore",
+    "expenditure_rolling_volatility_6m_crore",
+    "expenditure_observations_6m",
+    "months_since_expenditure_update",
+    "physical_progress_pct",
+    "physical_progress_lag_1m_pct",
+    "physical_progress_lag_3m_pct",
+    "physical_progress_lag_6m_pct",
+    "physical_progress_velocity_pct_per_month",
+    "physical_progress_acceleration_pct_per_month2",
+    "physical_progress_rolling_trend_6m_pct_per_month",
+    "milestone_progress_pct",
+    "milestone_progress_lag_1m_pct",
+    "milestone_progress_lag_3m_pct",
+    "milestone_progress_lag_6m_pct",
+    "milestone_progress_velocity_pct_per_month",
+    "milestone_progress_acceleration_pct_per_month2",
+    "milestone_progress_rolling_trend_6m_pct_per_month",
+    "progress_current_pct",
+    "progress_velocity_pct_per_month",
+    "progress_acceleration_pct_per_month2",
+    "progress_rolling_trend_6m_pct_per_month",
+    "months_since_physical_progress_update",
+    "months_since_milestone_progress_update",
+    "months_since_progress_update",
+    "planned_duration_months",
+    "elapsed_since_approval_months",
+    "schedule_slippage_months",
+    "original_doc_slippage_months",
+    "revised_doc_slippage_months",
+    "revised_doc_shift_from_original_months",
+    "revised_doc_movement_1m_months",
+    "delay_growth_1m_months",
+    "delay_growth_3m_months",
+    "delay_growth_6m_months",
+    "milestone_slippage_vs_elapsed_pct_points",
+    "months_since_status_update",
+    "status_changes_6m",
+    "status_change_frequency_6m",
+    "status_recently_changed",
+    "history_months_available",
+    "lookback_observation_count_6m",
+    "Sector_CIVIL AVIATION",
+    "Sector_COAL",
+    "Sector_FERTILISERS",
+    "Sector_HEALTH AND FAMILY WELFARE",
+    "Sector_HOME AFFAIRS",
+    "Sector_PETROLEUM",
+    "Sector_POWER",
+    "Sector_RAILWAYS",
+    "Sector_ROAD TRANSPORT AND HIGHWAYS",
+    "Sector_STEEL",
+    "Sector_TELECOMMUNICATIONS",
+    "Sector_URBAN DEVELOPMENT",
+    "Sector_WATER RESOURCES",
+    "Agency_AAI",
+    "Agency_BCCL",
+    "Agency_BSNL",
+    "Agency_CMRL",
+    "Agency_CPWD",
+    "Agency_CPWD FOR MHA",
+    "Agency_ECR",
+    "Agency_ER",
+    "Agency_HPCL",
+    "Agency_HSCC",
+    "Agency_HSCL",
+    "Agency_IOCL",
+    "Agency_IRCON",
+    "Agency_ITI",
+    "Agency_KMRCL",
+    "Agency_MMRC",
+    "Agency_MTNL",
+    "Agency_MoRTH",
+    "Agency_NCL",
+    "Agency_NER",
+    "Agency_NFL",
+    "Agency_NFR",
+    "Agency_NHAI",
+    "Agency_NHIDCL",
+    "Agency_NLC",
+    "Agency_NMDC",
+    "Agency_NMRCL",
+    "Agency_NTPC",
+    "Agency_ONGC",
+    "Agency_PGCIL",
+    "Agency_RCF",
+    "Agency_RINL",
+    "Agency_RVNL",
+    "Agency_SAIL",
+    "Agency_SCR",
+    "Agency_SR",
+    "Agency_UPJalNigam",
+    "Agency_WCR",
+    "Project_Status_Ahead of Schedule",
+    "Project_Status_Delayed",
+    "Project_Status_On Schedule",
+    "Project_Status_Ongoing",
+    "Project_Status_Without Fixed Date of Commissioning",
+    "Project_Status_Without Original Date of Commissioning",
+    "Project_Status___MISSING__"
+  ],
+  "target_definitions": {
+    "cost": {
+      "source": "latest project Cost_Overrun_Percent",
+      "threshold": 10.0,
+      "operator": ">="
+    },
+    "schedule": {
+      "source": "latest project Time_Overrun_Months",
+      "threshold": 3.0,
+      "operator": ">="
+    }
+  },
+  "model_types": {
+    "cost": "LogisticRegression",
+    "schedule": "LogisticRegression",
+    "risk_combination": "LogisticRegression"
+  },
+  "regularization": {
+    "penalty": "l2",
+    "C": 1.0,
+    "solver": "lbfgs",
+    "class_weight": "balanced when minority prevalence < 0.35, otherwise None",
+    "max_iter": 2000
+  },
+  "group_kfold": {
+    "n_splits": 5,
+    "group_column": "Project_ID",
+    "nested_for_risk_combination": true
+  },
+  "random_seed": 42,
+  "validation_metrics": {
+    "cost": {
+      "roc_auc": {
+        "mean": 0.7162374243366258,
+        "std": 0.09938964271635714
+      },
+      "pr_auc_average_precision": {
+        "mean": 0.7455342227035976,
+        "std": 0.05150998120494007
+      },
+      "f1": {
+        "mean": 0.6328371870075593,
+        "std": 0.042914626854059564
+      },
+      "precision": {
+        "mean": 0.6983807556742828,
+        "std": 0.1112836454843962
+      },
+      "recall": {
+        "mean": 0.6040261454893276,
+        "std": 0.11901989447078248
+      },
+      "brier_score": {
+        "mean": 0.2311399830735888,
+        "std": 0.04890928523651103
+      }
+    },
+    "schedule": {
+      "roc_auc": {
+        "mean": 0.6402332319823768,
+        "std": 0.07940602630725625
+      },
+      "pr_auc_average_precision": {
+        "mean": 0.728828194278577,
+        "std": 0.10706615706363762
+      },
+      "f1": {
+        "mean": 0.7392297471113979,
+        "std": 0.04273927514727493
+      },
+      "precision": {
+        "mean": 0.727849635445404,
+        "std": 0.05952506334815946
+      },
+      "recall": {
+        "mean": 0.7544665339408995,
+        "std": 0.054214799071794585
+      },
+      "brier_score": {
+        "mean": 0.2520652018147452,
+        "std": 0.022864105019216
+      }
+    },
+    "risk_combination": {
+      "roc_auc": {
+        "mean": 0.6339973284422167,
+        "std": 0.17780148868313272
+      },
+      "pr_auc_average_precision": {
+        "mean": 0.8769696606186452,
+        "std": 0.06508724154870475
+      },
+      "f1": {
+        "mean": 0.6892237349558785,
+        "std": 0.10759792107718491
+      },
+      "precision": {
+        "mean": 0.8833043102269265,
+        "std": 0.0659321066776001
+      },
+      "recall": {
+        "mean": 0.5772718947400131,
+        "std": 0.14697368175091663
+      },
+      "brier_score": {
+        "mean": 0.223069075321286,
+        "std": 0.03553704456636229
+      }
+    }
+  },
+  "preprocessing_version": "1.0.0",
+  "risk_threshold_version": "1.0.0",
+  "python_version": "3.14.4",
+  "dataset_audit_generated_at_utc": "2026-09-25T19:22:09.209955+00:00",
+  "known_data_limitations": [
+    "The 100 completed terminal rows have null Cost_Overrun_Percent and Time_Overrun_Months. For each project, labels use the latest non-null metric in its completed_cleaned.csv history (pre-completion in this dataset). Labels remain project-level and are not predictors.",
+    "Sector/Agency are Phase-1 project-mode-resolved and cannot be proven historically available per snapshot from these cleaned files."
+  ],
+  "example_completed_prediction": {
+    "project_id": "220100205",
+    "cost_overrun_probability": 0.9761331596664514,
+    "schedule_overrun_probability": 1.274225055397404e-11,
+    "overall_risk_probability": 0.6911829037745872,
+    "risk_level": "CRITICAL",
+    "prediction_snapshot": "2024-05-01",
+    "note": "Retrospective example scored by final model; this project is part of training data."
+  },
+  "ongoing_inference": {
+    "rows_scored": 6511,
+    "projects_scored": 100,
+    "failed_or_invalid_prediction_rows": 0,
+    "probabilities_finite": true,
+    "unseen_category_check": "passed",
+    "output_file": "outputs\\ongoing_risk_predictions.csv",
+    "temporal_integrity": {
+      "projects_checked": 8,
+      "passed": true,
+      "failures": [],
+      "rule": "features(t) use only information available through snapshot t; later snapshots do not change earlier rows"
+    },
+    "retraining_performed": false
+  }
+}

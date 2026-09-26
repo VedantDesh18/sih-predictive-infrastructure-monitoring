@@ -63,6 +63,7 @@ export default function Home() {
   const [ministry, setMinistry] = useState("ALL");
   const [sector, setSector] = useState("ALL");
   const [level, setLevel] = useState("ALL");
+  const [mlLevel, setMlLevel] = useState("ALL");
   const [trend, setTrend] = useState("ALL");
 
   useEffect(() => {
@@ -94,9 +95,10 @@ export default function Home() {
           (ministry === "ALL" || project.ministry === ministry) &&
           (sector === "ALL" || project.sector === sector) &&
           (level === "ALL" || project.risk.scores.risk_level === level) &&
+          (mlLevel === "ALL" || project.ml_risk?.risk_level === mlLevel) &&
           (trend === "ALL" || project.risk.trajectory.trend === trend)
       ),
-    [projects, ministry, sector, level, trend]
+    [projects, ministry, sector, level, mlLevel, trend]
   );
 
   const distributionOption: EChartsOption = useMemo(
@@ -436,6 +438,12 @@ export default function Home() {
                   options={["LOW", "MEDIUM", "HIGH", "CRITICAL"]}
                 />
                 <Filter
+                  value={mlLevel}
+                  onChange={setMlLevel}
+                  label="ML Risk"
+                  options={["LOW", "MEDIUM", "HIGH", "CRITICAL"]}
+                />
+                <Filter
                   value={trend}
                   onChange={setTrend}
                   label="Trend"
@@ -461,6 +469,7 @@ export default function Home() {
                     "Schedule",
                     "Execution",
                     "Overall",
+                    "ML Risk",
                     "Trend",
                     "Alert",
                   ].map((item) => (
@@ -503,6 +512,9 @@ export default function Home() {
                       value={project.risk.scores.overall_risk}
                       strong
                     />
+                    <td className="px-4 text-xs font-semibold text-indigo-700">
+                      {project.ml_risk ? `${Math.round(project.ml_risk.overall_risk_probability * 100)}%` : "—"}
+                    </td>
                     <td className="px-4">
                       <RiskBadge
                         value={project.risk.trajectory.trend}

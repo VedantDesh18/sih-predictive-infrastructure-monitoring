@@ -51,6 +51,13 @@ export type Project = {
   condition: string;
   data_source: string;
   risk: Risk;
+  ml_risk?: {
+    cost_overrun_probability: number;
+    schedule_overrun_probability: number;
+    overall_risk_probability: number;
+    risk_level: string;
+  };
+  ml_alerts?: Alert[];
 };
 
 export type Statistics = {

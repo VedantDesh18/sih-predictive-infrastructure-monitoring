@@ -186,4 +186,7 @@ def project_payload(project: Project, include_risk: bool = True) -> dict[str, An
     }
     if include_risk:
         payload["risk"] = calculate_risk(project)
+        if project.ml_risk_predictions:
+            payload["ml_risk"] = project.ml_risk_predictions
+            payload["ml_alerts"] = project.ml_alerts or []
     return payload

@@ -1,0 +1,653 @@
+{
+  "generated_at_utc": "2026-09-25T19:22:43.123001+00:00",
+  "validation_strategy": {
+    "splitter": "GroupKFold",
+    "n_splits": 5,
+    "group_column": "Project_ID",
+    "random_split_used": false,
+    "row_level_kfold_used": false,
+    "overlap_assertion": "assert set(train_project_ids).isdisjoint(set(validation_project_ids)) for every fold",
+    "metric_weighting": "Each project's rows receive equal total sample weight within a validation fold; fold reports also contain raw confusion-matrix counts."
+  },
+  "cost_model": {
+    "model_type": "LogisticRegression",
+    "folds": [
+      {
+        "fold": 1,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6129,
+        "validation_rows": 1537,
+        "validation_class_counts": {
+          "0": 887,
+          "1": 650
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.6935505045903541,
+          "pr_auc_average_precision": 0.7265501255664875,
+          "f1": 0.6191747787632507,
+          "precision": 0.7030374021173442,
+          "recall": 0.5531872078127126,
+          "brier_score": 0.21338098728926178,
+          "confusion_matrix_unweighted": {
+            "tn": 721,
+            "fp": 166,
+            "fn": 287,
+            "tp": 363
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6136,
+        "validation_rows": 1530,
+        "validation_class_counts": {
+          "0": 933,
+          "1": 597
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.7318063682204496,
+          "pr_auc_average_precision": 0.7311430627956761,
+          "f1": 0.6186324081899114,
+          "precision": 0.6947340749371965,
+          "recall": 0.5575571948581334,
+          "brier_score": 0.19717713836778467,
+          "confusion_matrix_unweighted": {
+            "tn": 772,
+            "fp": 161,
+            "fn": 250,
+            "tp": 347
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6136,
+        "validation_rows": 1530,
+        "validation_class_counts": {
+          "0": 996,
+          "1": 534
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.7430160095425512,
+          "pr_auc_average_precision": 0.7191604145893347,
+          "f1": 0.623302305260508,
+          "precision": 0.5447233293649373,
+          "recall": 0.728373741729035,
+          "brier_score": 0.23820758551475293,
+          "confusion_matrix_unweighted": {
+            "tn": 627,
+            "fp": 369,
+            "fn": 140,
+            "tp": 394
+          }
+        }
+      },
+      {
+        "fold": 4,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6131,
+        "validation_rows": 1535,
+        "validation_class_counts": {
+          "0": 453,
+          "1": 1082
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.568846671914817,
+          "pr_auc_average_precision": 0.7139064867105582,
+          "f1": 0.7071612935416801,
+          "precision": 0.6903244287990719,
+          "recall": 0.724839985303791,
+          "brier_score": 0.3128500309811866,
+          "confusion_matrix_unweighted": {
+            "tn": 213,
+            "fp": 240,
+            "fn": 313,
+            "tp": 769
+          }
+        }
+      },
+      {
+        "fold": 5,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6132,
+        "validation_rows": 1534,
+        "validation_class_counts": {
+          "0": 731,
+          "1": 803
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.8439675674149576,
+          "pr_auc_average_precision": 0.8369110238559314,
+          "f1": 0.5959151492824467,
+          "precision": 0.859084543152864,
+          "recall": 0.45617259774296626,
+          "brier_score": 0.19408417321495805,
+          "confusion_matrix_unweighted": {
+            "tn": 667,
+            "fp": 64,
+            "fn": 434,
+            "tp": 369
+          }
+        }
+      }
+    ],
+    "summary_mean_std": {
+      "roc_auc": {
+        "mean": 0.7162374243366258,
+        "std": 0.09938964271635714
+      },
+      "pr_auc_average_precision": {
+        "mean": 0.7455342227035976,
+        "std": 0.05150998120494007
+      },
+      "f1": {
+        "mean": 0.6328371870075593,
+        "std": 0.042914626854059564
+      },
+      "precision": {
+        "mean": 0.6983807556742828,
+        "std": 0.1112836454843962
+      },
+      "recall": {
+        "mean": 0.6040261454893276,
+        "std": 0.11901989447078248
+      },
+      "brier_score": {
+        "mean": 0.2311399830735888,
+        "std": 0.04890928523651103
+      }
+    },
+    "oof_probability_range": [
+      9.800047243049343e-162,
+      1.0
+    ],
+    "class_distribution_by_project": {
+      "0": 54,
+      "1": 46
+    }
+  },
+  "schedule_model": {
+    "model_type": "LogisticRegression",
+    "folds": [
+      {
+        "fold": 1,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6129,
+        "validation_rows": 1537,
+        "validation_class_counts": {
+          "0": 550,
+          "1": 987
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.6945054866250736,
+          "pr_auc_average_precision": 0.7842654513505871,
+          "f1": 0.7681671825696021,
+          "precision": 0.7850764962366312,
+          "recall": 0.7519709111663118,
+          "brier_score": 0.23527945605299364,
+          "confusion_matrix_unweighted": {
+            "tn": 332,
+            "fp": 218,
+            "fn": 265,
+            "tp": 722
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6136,
+        "validation_rows": 1530,
+        "validation_class_counts": {
+          "0": 673,
+          "1": 857
+        },
+        "class_weight": "balanced",
+        "metrics": {
+          "roc_auc": 0.6042107726255673,
+          "pr_auc_average_precision": 0.5649518042149573,
+          "f1": 0.6901001785381502,
+          "precision": 0.629601666100955,
+          "recall": 0.7634612800632838,
+          "brier_score": 0.2783718298660952,
+          "confusion_matrix_unweighted": {
+            "tn": 290,
+            "fp": 383,
+            "fn": 190,
+            "tp": 667
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6136,
+        "validation_rows": 1530,
+        "validation_class_counts": {
+          "0": 650,
+          "1": 880
+        },
+        "class_weight": "balanced",
+        "metrics": {
+          "roc_auc": 0.7298379700059757,
+          "pr_auc_average_precision": 0.8228680593064048,
+          "f1": 0.7500663195768364,
+          "precision": 0.7556799029549047,
+          "recall": 0.7445355224537623,
+          "brier_score": 0.23581373617059867,
+          "confusion_matrix_unweighted": {
+            "tn": 424,
+            "fp": 226,
+            "fn": 197,
+            "tp": 683
+          }
+        }
+      },
+      {
+        "fold": 4,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6131,
+        "validation_rows": 1535,
+        "validation_class_counts": {
+          "0": 437,
+          "1": 1098
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.6460255751703754,
+          "pr_auc_average_precision": 0.7950901749296947,
+          "f1": 0.7880340405605897,
+          "precision": 0.7482984428584288,
+          "recall": 0.8322263148597284,
+          "brier_score": 0.23505270237792172,
+          "confusion_matrix_unweighted": {
+            "tn": 153,
+            "fp": 284,
+            "fn": 196,
+            "tp": 902
+          }
+        }
+      },
+      {
+        "fold": 5,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6132,
+        "validation_rows": 1534,
+        "validation_class_counts": {
+          "0": 466,
+          "1": 1068
+        },
+        "class_weight": null,
+        "metrics": {
+          "roc_auc": 0.5265863554848917,
+          "pr_auc_average_precision": 0.6769654815912414,
+          "f1": 0.6997810143118113,
+          "precision": 0.7205916690760998,
+          "recall": 0.6801386411614111,
+          "brier_score": 0.2758082846061167,
+          "confusion_matrix_unweighted": {
+            "tn": 195,
+            "fp": 271,
+            "fn": 345,
+            "tp": 723
+          }
+        }
+      }
+    ],
+    "summary_mean_std": {
+      "roc_auc": {
+        "mean": 0.6402332319823768,
+        "std": 0.07940602630725625
+      },
+      "pr_auc_average_precision": {
+        "mean": 0.728828194278577,
+        "std": 0.10706615706363762
+      },
+      "f1": {
+        "mean": 0.7392297471113979,
+        "std": 0.04273927514727493
+      },
+      "precision": {
+        "mean": 0.727849635445404,
+        "std": 0.05952506334815946
+      },
+      "recall": {
+        "mean": 0.7544665339408995,
+        "std": 0.054214799071794585
+      },
+      "brier_score": {
+        "mean": 0.2520652018147452,
+        "std": 0.022864105019216
+      }
+    },
+    "oof_probability_range": [
+      0.0003808100809741255,
+      0.9999923704129723
+    ],
+    "class_distribution_by_project": {
+      "0": 36,
+      "1": 64
+    }
+  },
+  "risk_combination": {
+    "model_type": "LogisticRegression",
+    "input_features": [
+      "cost_overrun_probability",
+      "schedule_overrun_probability"
+    ],
+    "target": "Cost_Overrun_Flag OR Schedule_Overrun_Flag",
+    "training_predictions": "Base model out-of-fold probabilities; the final risk model is never trained on in-sample base predictions.",
+    "nested_validation_folds": [
+      {
+        "fold": 1,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6129,
+        "validation_rows": 1537,
+        "metrics": {
+          "roc_auc": 0.6341941060762802,
+          "pr_auc_average_precision": 0.8032480034579119,
+          "f1": 0.6861365248200856,
+          "precision": 0.8068912194870779,
+          "recall": 0.5968198951768923,
+          "brier_score": 0.23402002494732765,
+          "confusion_matrix_unweighted": {
+            "tn": 190,
+            "fp": 202,
+            "fn": 420,
+            "tp": 725
+          }
+        }
+      },
+      {
+        "fold": 2,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6136,
+        "validation_rows": 1530,
+        "metrics": {
+          "roc_auc": 0.7645989763016139,
+          "pr_auc_average_precision": 0.9075082169955909,
+          "f1": 0.60839338485846,
+          "precision": 0.928602652620599,
+          "recall": 0.4523945534114074,
+          "brier_score": 0.2401066925433213,
+          "confusion_matrix_unweighted": {
+            "tn": 366,
+            "fp": 43,
+            "fn": 568,
+            "tp": 553
+          }
+        }
+      },
+      {
+        "fold": 3,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6136,
+        "validation_rows": 1530,
+        "metrics": {
+          "roc_auc": 0.620691261970313,
+          "pr_auc_average_precision": 0.8117358233480334,
+          "f1": 0.6752111084555665,
+          "precision": 0.8158207967651109,
+          "recall": 0.5759449046021119,
+          "brier_score": 0.24002355610062176,
+          "confusion_matrix_unweighted": {
+            "tn": 268,
+            "fp": 171,
+            "fn": 390,
+            "tp": 701
+          }
+        }
+      },
+      {
+        "fold": 4,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6131,
+        "validation_rows": 1535,
+        "metrics": {
+          "roc_auc": 0.3490682917698645,
+          "pr_auc_average_precision": 0.9461002631389284,
+          "f1": 0.8700498530398894,
+          "precision": 0.9390236163164352,
+          "recall": 0.8105153603742452,
+          "brier_score": 0.1597078873843995,
+          "confusion_matrix_unweighted": {
+            "tn": 0,
+            "fp": 35,
+            "fn": 278,
+            "tp": 1222
+          }
+        }
+      },
+      {
+        "fold": 5,
+        "train_projects": 80,
+        "validation_projects": 20,
+        "train_rows": 6132,
+        "validation_rows": 1534,
+        "metrics": {
+          "roc_auc": 0.8014340060930113,
+          "pr_auc_average_precision": 0.9162559961527609,
+          "f1": 0.6063278036053907,
+          "precision": 0.9261832659454095,
+          "recall": 0.4506847601354085,
+          "brier_score": 0.24148721563075987,
+          "confusion_matrix_unweighted": {
+            "tn": 262,
+            "fp": 50,
+            "fn": 643,
+            "tp": 579
+          }
+        }
+      }
+    ],
+    "summary_mean_std": {
+      "roc_auc": {
+        "mean": 0.6339973284422167,
+        "std": 0.17780148868313272
+      },
+      "pr_auc_average_precision": {
+        "mean": 0.8769696606186452,
+        "std": 0.06508724154870475
+      },
+      "f1": {
+        "mean": 0.6892237349558785,
+        "std": 0.10759792107718491
+      },
+      "precision": {
+        "mean": 0.8833043102269265,
+        "std": 0.0659321066776001
+      },
+      "recall": {
+        "mean": 0.5772718947400131,
+        "std": 0.14697368175091663
+      },
+      "brier_score": {
+        "mean": 0.223069075321286,
+        "std": 0.03553704456636229
+      }
+    },
+    "nested_oof_probability_range": [
+      0.19272329561720958,
+      0.8153323473161782
+    ]
+  },
+  "data_counts": {
+    "input_rows": 7766,
+    "terminal_rows_excluded": 100,
+    "rows_with_sufficient_target_labels": 7666,
+    "rows_excluded_missing_project_outcome": 0,
+    "unique_projects_in_input": 100,
+    "unique_projects_in_model": 100,
+    "rows_with_less_than_six_months_since_first_observation": 600,
+    "projects_with_less_than_six_months_at_any_prediction_snapshot": 100,
+    "rows_removed_for_insufficient_history": 0,
+    "rows_removed_for_duplicate_project_snapshot": 0,
+    "source_integrity": {
+      "input_rows": 7766,
+      "invalid_project_id_rows": 0,
+      "invalid_snapshot_date_rows": 0,
+      "rows_dropped_invalid_keys": 0,
+      "duplicate_project_snapshot_rows": 0,
+      "duplicate_handling": "none required",
+      "unique_projects": 100,
+      "output_rows": 7766,
+      "chronological_by_project": true,
+      "missingness_count_and_fraction": {
+        "Project_ID": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Project_Name": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Snapshot_Date": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Time_Index": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Is_Completed_Snapshot": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Agency": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Sector": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Project_Status": {
+          "missing": 1830,
+          "fraction": 0.23564254442441412
+        },
+        "Date_of_Approval": {
+          "missing": 536,
+          "fraction": 0.06901879989698687
+        },
+        "Original_DoC": {
+          "missing": 1385,
+          "fraction": 0.17834148853978882
+        },
+        "Revised_or_Anticipated_DoC": {
+          "missing": 2026,
+          "fraction": 0.26088076229719287
+        },
+        "Original_Cost_Crore": {
+          "missing": 218,
+          "fraction": 0.028071079062580478
+        },
+        "Revised_or_Anticipated_Cost_Crore": {
+          "missing": 302,
+          "fraction": 0.03888745815091424
+        },
+        "Cumulative_Expenditure_Crore": {
+          "missing": 678,
+          "fraction": 0.08730363121297965
+        },
+        "Milestones_Achieved": {
+          "missing": 4392,
+          "fraction": 0.5655421066185938
+        },
+        "Milestones_Total": {
+          "missing": 4392,
+          "fraction": 0.5655421066185938
+        },
+        "Milestone_Percent": {
+          "missing": 4392,
+          "fraction": 0.5655421066185938
+        },
+        "Time_Overrun_Months": {
+          "missing": 2494,
+          "fraction": 0.3211434457893381
+        },
+        "Cost_Overrun_Percent": {
+          "missing": 776,
+          "fraction": 0.09992274014936904
+        },
+        "Delay_Months": {
+          "missing": 5564,
+          "fraction": 0.7164563481843935
+        },
+        "Delay_Reason": {
+          "missing": 6866,
+          "fraction": 0.8841102240535669
+        },
+        "Has_Fixed_DoC": {
+          "missing": 12,
+          "fraction": 0.001545197012619109
+        },
+        "Has_Milestones": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Completed_In_Snapshot": {
+          "missing": 0,
+          "fraction": 0.0
+        },
+        "Completion_Month": {
+          "missing": 7666,
+          "fraction": 0.9871233582281741
+        },
+        "Physical_Progress (%)": {
+          "missing": 7510,
+          "fraction": 0.9670357970641257
+        }
+      }
+    }
+  },
+  "calibration": {
+    "method": "No separate probability calibration was fitted; Brier score is reported as an uncalibrated probability-quality metric.",
+    "brier_score_reported": true
+  },
+  "example_completed_prediction": {
+    "project_id": "220100205",
+    "cost_overrun_probability": 0.9761331596664514,
+    "schedule_overrun_probability": 1.274225055397404e-11,
+    "overall_risk_probability": 0.6911829037745872,
+    "risk_level": "CRITICAL",
+    "prediction_snapshot": "2024-05-01",
+    "note": "Retrospective example scored by final model; this project is part of training data."
+  },
+  "ongoing_inference": {
+    "rows_scored": 6511,
+    "projects_scored": 100,
+    "failed_or_invalid_prediction_rows": 0,
+    "probabilities_finite": true,
+    "unseen_category_check": "passed",
+    "output_file": "outputs\\ongoing_risk_predictions.csv",
+    "temporal_integrity": {
+      "projects_checked": 8,
+      "passed": true,
+      "failures": [],
+      "rule": "features(t) use only information available through snapshot t; later snapshots do not change earlier rows"
+    },
+    "retraining_performed": false
+  }
+}

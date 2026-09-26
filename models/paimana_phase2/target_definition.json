@@ -1,0 +1,65 @@
+{
+  "version": "1.0.0",
+  "source_dataset": "completed_cleaned.csv",
+  "threshold_configuration": {
+    "cost_overrun_percent": 10.0,
+    "schedule_overrun_months": 3.0
+  },
+  "selection_rationale": "No target thresholds were present in the inspected architecture/repository. Explicit defaults define a material overrun as at least 10% cost growth or at least 3 months beyond the original schedule; both are configurable CLI options.",
+  "cost_target": {
+    "target": "Cost_Overrun_Flag",
+    "source_field": "Cost_Overrun_Percent",
+    "threshold": 10.0,
+    "unit": "percent",
+    "comparison": ">=",
+    "latest_nonmissing_projects": 100,
+    "positive_projects": 46,
+    "class_counts": {
+      "0": 54,
+      "1": 46
+    },
+    "project_outcome_distribution": {
+      "count": 100.0,
+      "mean": 44.1567,
+      "std": 81.85288293368508,
+      "min": -51.37,
+      "25%": 0.0,
+      "50%": 2.79,
+      "75%": 52.5325,
+      "90%": 157.20000000000002,
+      "max": 350.75
+    },
+    "label_selection": "Latest valid project-level Cost_Overrun_Percent in completed_cleaned.csv; terminal Is_Completed_Snapshot rows contain no values, so this is the latest available pre-completion report."
+  },
+  "schedule_target": {
+    "target": "Schedule_Overrun_Flag",
+    "source_field": "Time_Overrun_Months",
+    "threshold": 3.0,
+    "unit": "months",
+    "comparison": ">=",
+    "latest_nonmissing_projects": 100,
+    "positive_projects": 64,
+    "class_counts": {
+      "0": 36,
+      "1": 64
+    },
+    "project_outcome_distribution": {
+      "count": 100.0,
+      "mean": 85.84299999999999,
+      "std": 162.00396429555283,
+      "min": 0.0,
+      "25%": 0.0,
+      "50%": 24.5,
+      "75%": 77.25,
+      "90%": 245.30000000000018,
+      "max": 862.0
+    },
+    "label_selection": "Latest valid project-level Time_Overrun_Months in completed_cleaned.csv; terminal Is_Completed_Snapshot rows contain no values, so this is the latest available pre-completion report."
+  },
+  "overall_risk_target": {
+    "target": "Overall_Overrun_Flag",
+    "definition": "Cost_Overrun_Flag OR Schedule_Overrun_Flag",
+    "positive_projects": 80
+  },
+  "terminal_snapshot_issue": "The 100 completed terminal rows have null Cost_Overrun_Percent and Time_Overrun_Months. For each project, labels use the latest non-null metric in its completed_cleaned.csv history (pre-completion in this dataset). Labels remain project-level and are not predictors."
+}

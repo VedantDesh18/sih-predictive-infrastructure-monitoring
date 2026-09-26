@@ -149,6 +149,23 @@ export default function ProjectDetail({
               <span className="text-lg text-rose-700/60">/100</span>
             </p>
           </div>
+          {project.ml_risk && (
+            <div className="rounded border border-indigo-200 bg-indigo-50 px-5 py-3 shadow-sm">
+              <p className="text-[10px] font-bold uppercase tracking-[.1em] text-indigo-700">
+                ML Predicted Risk
+              </p>
+              <div className="flex items-center gap-3">
+                <p className="mt-1 text-4xl font-semibold text-indigo-700">
+                  {Math.round(project.ml_risk.overall_risk_probability * 100)}%
+                </p>
+                <div className="flex flex-col">
+                  <span className="text-[10px] font-semibold text-indigo-900 uppercase">
+                    {project.ml_risk.risk_level}
+                  </span>
+                </div>
+              </div>
+            </div>
+          )}
         </div>
       </header>
       <section className="grid gap-4 px-5 py-6 md:grid-cols-3 md:px-8">
@@ -266,6 +283,23 @@ export default function ProjectDetail({
                 </div>
                 <p className="mt-2 text-sm text-slate-700">{alert.reason}</p>
                 <p className="mt-2 text-xs font-medium text-rose-700">
+                  {alert.supporting_metric}
+                </p>
+              </div>
+            ))}
+            {project.ml_alerts?.map((alert) => (
+              <div
+                key={alert.type}
+                className="rounded border border-indigo-200 bg-indigo-50 p-4"
+              >
+                <div className="flex flex-wrap items-center gap-2">
+                  <RiskBadge value={alert.severity} compact />
+                  <h3 className="text-sm font-semibold text-slate-800">
+                    {alert.type}
+                  </h3>
+                </div>
+                <p className="mt-2 text-sm text-slate-700">{alert.reason}</p>
+                <p className="mt-2 text-xs font-medium text-indigo-700">
                   {alert.supporting_metric}
                 </p>
               </div>

@@ -213,3 +213,15 @@ demo project**. For the API documentation, open
 The UI deliberately describes this as **Predictive Risk Engine — prototype**.
 The `risk_engine.py` output contract is the replacement boundary for a future
 validated XGBoost, LightGBM, or statistical model.
+
+## PAIMANA Phase 2 (snapshot models)
+
+Phase 2 trains leakage-safe cost and schedule models from
+`data/processed/completed_cleaned.csv` and scores
+`data/processed/ongoing_cleaned.csv` without retraining. Commands, feature
+definitions, and artifact paths are documented in `modeling/README.md`.
+
+```powershell
+.\venv\Scripts\python.exe -m pip install -r ml\requirements-phase2.txt
+.\venv\Scripts\python.exe pipelines\training\train_phase2.py
+```

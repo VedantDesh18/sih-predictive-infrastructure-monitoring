@@ -40,6 +40,8 @@ class Project(UUIDPrimaryKeyMixin, TimestampMixin, Base):
     expected_completion: Mapped[date] = mapped_column(Date, nullable=False)
     condition: Mapped[str] = mapped_column(String(50), nullable=False)
     risk_history: Mapped[list[dict[str, object]]] = mapped_column(JSON, nullable=False)
+    ml_risk_predictions: Mapped[dict[str, object] | None] = mapped_column(JSON, nullable=True)
+    ml_alerts: Mapped[list[dict[str, object]] | None] = mapped_column(JSON, nullable=True)
     is_synthetic: Mapped[bool] = mapped_column(
         Boolean, nullable=False, server_default="true"
     )

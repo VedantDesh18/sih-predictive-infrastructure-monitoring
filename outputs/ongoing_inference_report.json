@@ -1,0 +1,255 @@
+{
+  "generated_at_utc": "2026-09-25T19:23:30.484444+00:00",
+  "source_dataset": "data\\processed\\ongoing_cleaned.csv",
+  "retraining_performed": false,
+  "input_rows": 6511,
+  "rows_dropped_invalid_keys": 0,
+  "duplicate_project_snapshot_rows_collapsed": 0,
+  "rows_scored": 6511,
+  "projects_scored": 100,
+  "failed_or_invalid_prediction_rows": 0,
+  "failure_reasons": [],
+  "missing_features": {
+    "original_cost_crore": {
+      "missing": 231,
+      "fraction": 0.03547842113346644
+    },
+    "revised_budget_crore": {
+      "missing": 558,
+      "fraction": 0.08570112117954232
+    },
+    "revised_budget_to_original_ratio": {
+      "missing": 601,
+      "fraction": 0.09230532944248196
+    },
+    "cumulative_expenditure_crore": {
+      "missing": 545,
+      "fraction": 0.08370450007679311
+    },
+    "expenditure_ratio": {
+      "missing": 600,
+      "fraction": 0.09215174320380894
+    },
+    "expenditure_lag_1m_crore": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_lag_3m_crore": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_lag_6m_crore": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_velocity_crore_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_growth_1m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_growth_3m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_3m_trend_crore_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_6m_trend_crore_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "expenditure_rolling_mean_6m_crore": {
+      "missing": 212,
+      "fraction": 0.03256028259867916
+    },
+    "expenditure_rolling_volatility_6m_crore": {
+      "missing": 333,
+      "fraction": 0.051144217478113964
+    },
+    "expenditure_observations_6m": {
+      "missing": 0,
+      "fraction": 0.0
+    },
+    "months_since_expenditure_update": {
+      "missing": 192,
+      "fraction": 0.02948855782521886
+    },
+    "physical_progress_pct": {
+      "missing": 5877,
+      "fraction": 0.9026263246813085
+    },
+    "physical_progress_lag_1m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "physical_progress_lag_3m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "physical_progress_lag_6m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "physical_progress_velocity_pct_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "physical_progress_acceleration_pct_per_month2": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "physical_progress_rolling_trend_6m_pct_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_progress_pct": {
+      "missing": 5415,
+      "fraction": 0.8316694824143757
+    },
+    "milestone_progress_lag_1m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_progress_lag_3m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_progress_lag_6m_pct": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_progress_velocity_pct_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_progress_acceleration_pct_per_month2": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_progress_rolling_trend_6m_pct_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "progress_current_pct": {
+      "missing": 4781,
+      "fraction": 0.7342958070956842
+    },
+    "progress_velocity_pct_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "progress_acceleration_pct_per_month2": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "progress_rolling_trend_6m_pct_per_month": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "months_since_physical_progress_update": {
+      "missing": 5398,
+      "fraction": 0.8290585163569344
+    },
+    "months_since_milestone_progress_update": {
+      "missing": 4698,
+      "fraction": 0.721548149285824
+    },
+    "months_since_progress_update": {
+      "missing": 3953,
+      "fraction": 0.6071264014744279
+    },
+    "planned_duration_months": {
+      "missing": 2167,
+      "fraction": 0.3328213792044233
+    },
+    "elapsed_since_approval_months": {
+      "missing": 955,
+      "fraction": 0.14667485793272922
+    },
+    "schedule_slippage_months": {
+      "missing": 1621,
+      "fraction": 0.24896329288895716
+    },
+    "original_doc_slippage_months": {
+      "missing": 2138,
+      "fraction": 0.32836737828290585
+    },
+    "revised_doc_slippage_months": {
+      "missing": 2267,
+      "fraction": 0.34818000307172475
+    },
+    "revised_doc_shift_from_original_months": {
+      "missing": 2784,
+      "fraction": 0.4275840884656735
+    },
+    "revised_doc_movement_1m_months": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "delay_growth_1m_months": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "delay_growth_3m_months": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "delay_growth_6m_months": {
+      "missing": 6511,
+      "fraction": 1.0
+    },
+    "milestone_slippage_vs_elapsed_pct_points": {
+      "missing": 5497,
+      "fraction": 0.8442635539855629
+    },
+    "months_since_status_update": {
+      "missing": 201,
+      "fraction": 0.030870833973275995
+    },
+    "status_changes_6m": {
+      "missing": 0,
+      "fraction": 0.0
+    },
+    "status_change_frequency_6m": {
+      "missing": 790,
+      "fraction": 0.12133312855168177
+    },
+    "status_recently_changed": {
+      "missing": 1181,
+      "fraction": 0.1813853478728306
+    },
+    "history_months_available": {
+      "missing": 0,
+      "fraction": 0.0
+    },
+    "lookback_observation_count_6m": {
+      "missing": 0,
+      "fraction": 0.0
+    },
+    "Sector": {
+      "missing": 0,
+      "fraction": 0.0
+    },
+    "Agency": {
+      "missing": 0,
+      "fraction": 0.0
+    },
+    "Project_Status": {
+      "missing": 1663,
+      "fraction": 0.2554139149132238
+    }
+  },
+  "missing_feature_policy": "Unavailable lags/rolling statistics remain missing in constructed features and are imputed only by the saved training-fold preprocessor at inference time. Missingness is reported here and as Missing_Approved_Feature_Count; values are not forward-filled from later snapshots.",
+  "unseen_category_check": "passed",
+  "temporal_integrity": {
+    "projects_checked": 8,
+    "passed": true,
+    "failures": [],
+    "rule": "features(t) use only information available through snapshot t; later snapshots do not change earlier rows"
+  },
+  "output_file": "outputs\\ongoing_risk_predictions.csv"
+}
