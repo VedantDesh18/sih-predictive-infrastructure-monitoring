@@ -74,6 +74,8 @@ export type Statistics = {
 export type Portfolio = {
   data_source: string;
   risk_distribution: { level: string; count: number }[];
+  ml_risk_distribution?: { level: string; count: number }[];
+  cost_risk_buckets?: { bucket: string; count: number }[];
   portfolio_trend: { month: string; risk: number }[];
   ministry_comparison: { name: string; risk: number }[];
   sector_comparison: { name: string; risk: number }[];
@@ -84,4 +86,25 @@ export type Portfolio = {
     risk_level: string;
     trend: string;
   }[];
+};
+
+export type TrajectoryPoint = {
+  snapshot_date: string;
+  model_version: string;
+  cost_probability: number;
+  schedule_probability: number;
+  overall_probability: number;
+  risk_level: string;
+  realized_cost_overrun: number | null;
+  realized_schedule_delay: number | null;
+};
+
+export type ProjectTrajectoryResponse = {
+  project_id: string;
+  project_name: string;
+  sector: string;
+  agency: string;
+  data_source: string;
+  total_snapshots: number;
+  trajectory: TrajectoryPoint[];
 };

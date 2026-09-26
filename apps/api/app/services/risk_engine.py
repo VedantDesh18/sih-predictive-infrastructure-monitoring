@@ -181,7 +181,7 @@ def project_payload(project: Project, include_risk: bool = True) -> dict[str, An
         "expected_completion": project.expected_completion.isoformat(),
         "condition": project.condition,
         "data_source": (
-            SYNTHETIC_LABEL if project.is_synthetic else "PAIMANA-compatible data"
+            SYNTHETIC_LABEL if project.is_synthetic else "PAIMANA Real Ongoing Dataset (100 Projects)"
         ),
     }
     if include_risk:

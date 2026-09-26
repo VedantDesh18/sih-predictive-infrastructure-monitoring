@@ -1,11 +1,16 @@
-# Start Backend and Frontend concurrently from the repository root.
 $repositoryRoot = Split-Path -Parent $MyInvocation.MyCommand.Path
 $python = Join-Path $repositoryRoot "venv\Scripts\python.exe"
 
 if (-not (Test-Path $python)) {
-    throw "Python virtual environment not found at $python. Create it and install apps/api/requirements.txt first."
+    $pythonCmd = Get-Command python.exe -ErrorAction SilentlyContinue
+    if ($pythonCmd) {
+        $python = $pythonCmd.Source
+    } else {
+        throw "Python executable not found. Install Python or create a virtual environment first."
+    }
 }
 
+Write-Host "Using Python: $python" -ForegroundColor Cyan
 Write-Host "Starting SIH Project..." -ForegroundColor Green
 
 # The app-dir keeps imports correct while Settings resolves the repository-root .env.
@@ -18,7 +23,7 @@ $apiJob = Start-Job -ArgumentList $repositoryRoot, $python -ScriptBlock {
 $webJob = Start-Job -ArgumentList $repositoryRoot -ScriptBlock {
     param($root)
     Set-Location "$root\apps\web"
-    npm run dev
+    cmd /c "npm.cmd run dev"
 }
 
 Write-Host "API starting on http://localhost:8000/docs" -ForegroundColor Cyan

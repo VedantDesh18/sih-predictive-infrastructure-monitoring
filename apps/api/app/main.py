@@ -13,16 +13,16 @@ from app.api.v1.router import v1_router
 from app.core.config import settings
 from app.db.session import async_session_factory
 from app.schemas.common import ErrorInfo, ErrorResponse
-from app.services.synthetic_data import seed_synthetic_projects
+from app.services.real_data import load_real_portfolio
 
 logger = logging.getLogger(__name__)
 
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    """Seed the deterministic demo portfolio after Alembic creates the schema."""
+    """Seed the 100 real ongoing projects and their risk predictions on startup."""
     async with async_session_factory() as session:
-        await seed_synthetic_projects(session)
+        await load_real_portfolio(session)
     yield
 
 

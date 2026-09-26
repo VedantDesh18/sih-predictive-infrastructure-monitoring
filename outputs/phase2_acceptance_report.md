@@ -32,9 +32,9 @@ Output Range: 0.192723 to 0.815332
 
 Risk Thresholds:
 LOW: overall_risk_probability <= 0.440457
-MEDIUM: 0.440457 < overall_risk_probability <= 0.519482
-HIGH: 0.519482 < overall_risk_probability <= 0.646974
-CRITICAL: overall_risk_probability > 0.646974
+MEDIUM: 0.440457 < overall_risk_probability <= 0.519474
+HIGH: 0.519474 < overall_risk_probability <= 0.647016
+CRITICAL: overall_risk_probability > 0.647016
 
 Leakage Audit: PASS
 

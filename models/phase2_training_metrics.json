@@ -1,5 +1,5 @@
 {
-  "generated_at_utc": "2026-09-25T19:22:43.123001+00:00",
+  "generated_at_utc": "2026-09-26T06:35:57.519827+00:00",
   "validation_strategy": {
     "splitter": "GroupKFold",
     "n_splits": 5,
@@ -29,7 +29,7 @@
           "f1": 0.6191747787632507,
           "precision": 0.7030374021173442,
           "recall": 0.5531872078127126,
-          "brier_score": 0.21338098728926178,
+          "brier_score": 0.21338098738631855,
           "confusion_matrix_unweighted": {
             "tn": 721,
             "fp": 166,
@@ -55,7 +55,7 @@
           "f1": 0.6186324081899114,
           "precision": 0.6947340749371965,
           "recall": 0.5575571948581334,
-          "brier_score": 0.19717713836778467,
+          "brier_score": 0.1971771309900727,
           "confusion_matrix_unweighted": {
             "tn": 772,
             "fp": 161,
@@ -81,7 +81,7 @@
           "f1": 0.623302305260508,
           "precision": 0.5447233293649373,
           "recall": 0.728373741729035,
-          "brier_score": 0.23820758551475293,
+          "brier_score": 0.23820758563956454,
           "confusion_matrix_unweighted": {
             "tn": 627,
             "fp": 369,
@@ -102,12 +102,12 @@
         },
         "class_weight": null,
         "metrics": {
-          "roc_auc": 0.568846671914817,
-          "pr_auc_average_precision": 0.7139064867105582,
+          "roc_auc": 0.5688259683190069,
+          "pr_auc_average_precision": 0.713899047615826,
           "f1": 0.7071612935416801,
           "precision": 0.6903244287990719,
           "recall": 0.724839985303791,
-          "brier_score": 0.3128500309811866,
+          "brier_score": 0.31288759865696336,
           "confusion_matrix_unweighted": {
             "tn": 213,
             "fp": 240,
@@ -133,7 +133,7 @@
           "f1": 0.5959151492824467,
           "precision": 0.859084543152864,
           "recall": 0.45617259774296626,
-          "brier_score": 0.19408417321495805,
+          "brier_score": 0.19408418813974582,
           "confusion_matrix_unweighted": {
             "tn": 667,
             "fp": 64,
@@ -145,12 +145,12 @@
     ],
     "summary_mean_std": {
       "roc_auc": {
-        "mean": 0.7162374243366258,
-        "std": 0.09938964271635714
+        "mean": 0.716233283617464,
+        "std": 0.09939731849650192
       },
       "pr_auc_average_precision": {
-        "mean": 0.7455342227035976,
-        "std": 0.05150998120494007
+        "mean": 0.7455327348846511,
+        "std": 0.05151112322269253
       },
       "f1": {
         "mean": 0.6328371870075593,
@@ -165,12 +165,12 @@
         "std": 0.11901989447078248
       },
       "brier_score": {
-        "mean": 0.2311399830735888,
-        "std": 0.04890928523651103
+        "mean": 0.231147498162533,
+        "std": 0.048924974616399296
       }
     },
     "oof_probability_range": [
-      9.800047243049343e-162,
+      9.799996214356666e-162,
       1.0
     ],
     "class_distribution_by_project": {
@@ -198,7 +198,7 @@
           "f1": 0.7681671825696021,
           "precision": 0.7850764962366312,
           "recall": 0.7519709111663118,
-          "brier_score": 0.23527945605299364,
+          "brier_score": 0.2352794560211429,
           "confusion_matrix_unweighted": {
             "tn": 332,
             "fp": 218,
@@ -224,7 +224,7 @@
           "f1": 0.6901001785381502,
           "precision": 0.629601666100955,
           "recall": 0.7634612800632838,
-          "brier_score": 0.2783718298660952,
+          "brier_score": 0.278371829872184,
           "confusion_matrix_unweighted": {
             "tn": 290,
             "fp": 383,
@@ -246,11 +246,11 @@
         "class_weight": "balanced",
         "metrics": {
           "roc_auc": 0.7298379700059757,
-          "pr_auc_average_precision": 0.8228680593064048,
+          "pr_auc_average_precision": 0.822868059309779,
           "f1": 0.7500663195768364,
           "precision": 0.7556799029549047,
           "recall": 0.7445355224537623,
-          "brier_score": 0.23581373617059867,
+          "brier_score": 0.23581382373079623,
           "confusion_matrix_unweighted": {
             "tn": 424,
             "fp": 226,
@@ -276,7 +276,7 @@
           "f1": 0.7880340405605897,
           "precision": 0.7482984428584288,
           "recall": 0.8322263148597284,
-          "brier_score": 0.23505270237792172,
+          "brier_score": 0.23505270099695585,
           "confusion_matrix_unweighted": {
             "tn": 153,
             "fp": 284,
@@ -302,7 +302,7 @@
           "f1": 0.6997810143118113,
           "precision": 0.7205916690760998,
           "recall": 0.6801386411614111,
-          "brier_score": 0.2758082846061167,
+          "brier_score": 0.2758082845877254,
           "confusion_matrix_unweighted": {
             "tn": 195,
             "fp": 271,
@@ -318,8 +318,8 @@
         "std": 0.07940602630725625
       },
       "pr_auc_average_precision": {
-        "mean": 0.728828194278577,
-        "std": 0.10706615706363762
+        "mean": 0.7288281942792519,
+        "std": 0.10706615706437853
       },
       "f1": {
         "mean": 0.7392297471113979,
@@ -334,13 +334,13 @@
         "std": 0.054214799071794585
       },
       "brier_score": {
-        "mean": 0.2520652018147452,
-        "std": 0.022864105019216
+        "mean": 0.2520652190417609,
+        "std": 0.022864089719829808
       }
     },
     "oof_probability_range": [
-      0.0003808100809741255,
-      0.9999923704129723
+      0.0003808100816004134,
+      0.9999923704127356
     ],
     "class_distribution_by_project": {
       "0": 36,
@@ -368,7 +368,7 @@
           "f1": 0.6861365248200856,
           "precision": 0.8068912194870779,
           "recall": 0.5968198951768923,
-          "brier_score": 0.23402002494732765,
+          "brier_score": 0.2340200229570064,
           "confusion_matrix_unweighted": {
             "tn": 190,
             "fp": 202,
@@ -389,7 +389,7 @@
           "f1": 0.60839338485846,
           "precision": 0.928602652620599,
           "recall": 0.4523945534114074,
-          "brier_score": 0.2401066925433213,
+          "brier_score": 0.24010668761216553,
           "confusion_matrix_unweighted": {
             "tn": 366,
             "fp": 43,
@@ -410,7 +410,7 @@
           "f1": 0.6752111084555665,
           "precision": 0.8158207967651109,
           "recall": 0.5759449046021119,
-          "brier_score": 0.24002355610062176,
+          "brier_score": 0.24002355411008333,
           "confusion_matrix_unweighted": {
             "tn": 268,
             "fp": 171,
@@ -426,12 +426,12 @@
         "train_rows": 6131,
         "validation_rows": 1535,
         "metrics": {
-          "roc_auc": 0.3490682917698645,
-          "pr_auc_average_precision": 0.9461002631389284,
+          "roc_auc": 0.34878528917288243,
+          "pr_auc_average_precision": 0.9460653119756017,
           "f1": 0.8700498530398894,
           "precision": 0.9390236163164352,
           "recall": 0.8105153603742452,
-          "brier_score": 0.1597078873843995,
+          "brier_score": 0.15971891059035379,
           "confusion_matrix_unweighted": {
             "tn": 0,
             "fp": 35,
@@ -452,7 +452,7 @@
           "f1": 0.6063278036053907,
           "precision": 0.9261832659454095,
           "recall": 0.4506847601354085,
-          "brier_score": 0.24148721563075987,
+          "brier_score": 0.24148722580641022,
           "confusion_matrix_unweighted": {
             "tn": 262,
             "fp": 50,
@@ -464,12 +464,12 @@
     ],
     "summary_mean_std": {
       "roc_auc": {
-        "mean": 0.6339973284422167,
-        "std": 0.17780148868313272
+        "mean": 0.6339407279228202,
+        "std": 0.17791487634455724
       },
       "pr_auc_average_precision": {
-        "mean": 0.8769696606186452,
-        "std": 0.06508724154870475
+        "mean": 0.8769626703859797,
+        "std": 0.06507796216267396
       },
       "f1": {
         "mean": 0.6892237349558785,
@@ -484,13 +484,13 @@
         "std": 0.14697368175091663
       },
       "brier_score": {
-        "mean": 0.223069075321286,
-        "std": 0.03553704456636229
+        "mean": 0.22307128021520387,
+        "std": 0.03553213141691454
       }
     },
     "nested_oof_probability_range": [
-      0.19272329561720958,
-      0.8153323473161782
+      0.1927232739643452,
+      0.8153323609506931
     ]
   },
   "data_counts": {
@@ -628,9 +628,9 @@
   },
   "example_completed_prediction": {
     "project_id": "220100205",
-    "cost_overrun_probability": 0.9761331596664514,
-    "schedule_overrun_probability": 1.274225055397404e-11,
-    "overall_risk_probability": 0.6911829037745872,
+    "cost_overrun_probability": 0.9761331096640843,
+    "schedule_overrun_probability": 1.2742249189797687e-11,
+    "overall_risk_probability": 0.6911252860355506,
     "risk_level": "CRITICAL",
     "prediction_snapshot": "2024-05-01",
     "note": "Retrospective example scored by final model; this project is part of training data."

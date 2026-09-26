@@ -1,6 +1,6 @@
 {
   "model_version": "2.0.0",
-  "training_date_utc": "2026-09-25T19:22:43.129641+00:00",
+  "training_date_utc": "2026-09-26T06:35:57.527884+00:00",
   "training_datasets": [
     "completed_cleaned.csv"
   ],
@@ -218,12 +218,12 @@
   "validation_metrics": {
     "cost": {
       "roc_auc": {
-        "mean": 0.7162374243366258,
-        "std": 0.09938964271635714
+        "mean": 0.716233283617464,
+        "std": 0.09939731849650192
       },
       "pr_auc_average_precision": {
-        "mean": 0.7455342227035976,
-        "std": 0.05150998120494007
+        "mean": 0.7455327348846511,
+        "std": 0.05151112322269253
       },
       "f1": {
         "mean": 0.6328371870075593,
@@ -238,8 +238,8 @@
         "std": 0.11901989447078248
       },
       "brier_score": {
-        "mean": 0.2311399830735888,
-        "std": 0.04890928523651103
+        "mean": 0.231147498162533,
+        "std": 0.048924974616399296
       }
     },
     "schedule": {
@@ -248,8 +248,8 @@
         "std": 0.07940602630725625
       },
       "pr_auc_average_precision": {
-        "mean": 0.728828194278577,
-        "std": 0.10706615706363762
+        "mean": 0.7288281942792519,
+        "std": 0.10706615706437853
       },
       "f1": {
         "mean": 0.7392297471113979,
@@ -264,18 +264,18 @@
         "std": 0.054214799071794585
       },
       "brier_score": {
-        "mean": 0.2520652018147452,
-        "std": 0.022864105019216
+        "mean": 0.2520652190417609,
+        "std": 0.022864089719829808
       }
     },
     "risk_combination": {
       "roc_auc": {
-        "mean": 0.6339973284422167,
-        "std": 0.17780148868313272
+        "mean": 0.6339407279228202,
+        "std": 0.17791487634455724
       },
       "pr_auc_average_precision": {
-        "mean": 0.8769696606186452,
-        "std": 0.06508724154870475
+        "mean": 0.8769626703859797,
+        "std": 0.06507796216267396
       },
       "f1": {
         "mean": 0.6892237349558785,
@@ -290,24 +290,24 @@
         "std": 0.14697368175091663
       },
       "brier_score": {
-        "mean": 0.223069075321286,
-        "std": 0.03553704456636229
+        "mean": 0.22307128021520387,
+        "std": 0.03553213141691454
       }
     }
   },
   "preprocessing_version": "1.0.0",
   "risk_threshold_version": "1.0.0",
-  "python_version": "3.14.4",
-  "dataset_audit_generated_at_utc": "2026-09-25T19:22:09.209955+00:00",
+  "python_version": "3.14.2",
+  "dataset_audit_generated_at_utc": "2026-09-26T06:35:23.435048+00:00",
   "known_data_limitations": [
     "The 100 completed terminal rows have null Cost_Overrun_Percent and Time_Overrun_Months. For each project, labels use the latest non-null metric in its completed_cleaned.csv history (pre-completion in this dataset). Labels remain project-level and are not predictors.",
     "Sector/Agency are Phase-1 project-mode-resolved and cannot be proven historically available per snapshot from these cleaned files."
   ],
   "example_completed_prediction": {
     "project_id": "220100205",
-    "cost_overrun_probability": 0.9761331596664514,
-    "schedule_overrun_probability": 1.274225055397404e-11,
-    "overall_risk_probability": 0.6911829037745872,
+    "cost_overrun_probability": 0.9761331096640843,
+    "schedule_overrun_probability": 1.2742249189797687e-11,
+    "overall_risk_probability": 0.6911252860355506,
     "risk_level": "CRITICAL",
     "prediction_snapshot": "2024-05-01",
     "note": "Retrospective example scored by final model; this project is part of training data."

@@ -11,10 +11,19 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.api.dependencies import get_db
 from app.models.project import Project
+from app.models.risk_prediction import RiskPredictionHistory
 from app.services.risk_engine import SYNTHETIC_LABEL, calculate_risk, project_payload
+
+REAL_DATA_LABEL = "PAIMANA Real Ongoing Dataset (100 Projects)"
 
 projects_router = APIRouter(tags=["Predictive Monitoring"])
 DatabaseSession = Annotated[AsyncSession, Depends(get_db)]
+
+
+def _data_label(projects: list[Project]) -> str:
+    if not projects or any(p.is_synthetic for p in projects):
+        return SYNTHETIC_LABEL
+    return REAL_DATA_LABEL
 
 
 async def _all_projects(db: AsyncSession) -> list[Project]:
@@ -24,7 +33,9 @@ async def _all_projects(db: AsyncSession) -> list[Project]:
 
 async def _find_project(project_id: str, db: AsyncSession) -> Project:
     project = await db.scalar(
-        select(Project).where(Project.paimana_project_id == project_id)
+        select(Project).where(
+            (Project.paimana_project_id == project_id) | (Project.id == project_id)
+        )
     )
     if project is None:
         raise HTTPException(status_code=404, detail="Project not found")
@@ -43,8 +54,8 @@ async def list_projects(
         default=None, pattern="^(STABLE|IMPROVING|WORSENING|RAPIDLY WORSENING)$"
     ),
 ) -> dict[str, Any]:
-    projects = _all_projects(db)
-    rows = [project_payload(project) for project in await projects]
+    projects = await _all_projects(db)
+    rows = [project_payload(project) for project in projects]
     if ministry:
         rows = [row for row in rows if row["ministry"] == ministry]
     if sector:
@@ -56,7 +67,7 @@ async def list_projects(
     if trend:
         rows = [row for row in rows if row["risk"]["trajectory"]["trend"] == trend]
     rows.sort(key=lambda row: row["risk"]["scores"]["overall_risk"], reverse=True)
-    return {"data_source": SYNTHETIC_LABEL, "total": len(rows), "projects": rows}
+    return {"data_source": _data_label(projects), "total": len(rows), "projects": rows}
 
 
 @projects_router.get("/projects/{project_id}")
@@ -71,7 +82,7 @@ async def get_project_risk(project_id: str, db: DatabaseSession) -> dict[str, An
     res = {
         "project_id": project.paimana_project_id,
         "project_name": project.name,
-        "data_source": SYNTHETIC_LABEL,
+        "data_source": _data_label([project]),
         **risk,
     }
     if project.ml_risk_predictions:
@@ -85,12 +96,46 @@ async def get_project_alerts(project_id: str, db: DatabaseSession) -> dict[str, 
     res = {
         "project_id": project.paimana_project_id,
         "project_name": project.name,
-        "data_source": SYNTHETIC_LABEL,
+        "data_source": _data_label([project]),
         "alerts": calculate_risk(project)["alerts"],
     }
     if project.ml_alerts:
         res["ml_alerts"] = project.ml_alerts
     return res
+
+
+@projects_router.get("/projects/{project_id}/trajectory")
+async def get_project_trajectory(
+    project_id: str, db: DatabaseSession
+) -> dict[str, Any]:
+    project = await _find_project(project_id, db)
+    history_rows = await db.scalars(
+        select(RiskPredictionHistory)
+        .where(RiskPredictionHistory.project_id == project.paimana_project_id)
+        .order_by(RiskPredictionHistory.snapshot_date.asc())
+    )
+    records = list(history_rows)
+    return {
+        "project_id": project.paimana_project_id,
+        "project_name": project.name,
+        "sector": project.sector,
+        "agency": project.agency,
+        "data_source": _data_label([project]),
+        "total_snapshots": len(records),
+        "trajectory": [
+            {
+                "snapshot_date": r.snapshot_date.isoformat(),
+                "model_version": r.model_version,
+                "cost_probability": round(r.cost_probability, 4),
+                "schedule_probability": round(r.schedule_probability, 4),
+                "overall_probability": round(r.overall_probability, 4),
+                "risk_level": r.risk_level,
+                "realized_cost_overrun": r.realized_cost_overrun,
+                "realized_schedule_delay": r.realized_schedule_delay,
+            }
+            for r in records
+        ],
+    }
 
 
 @projects_router.get("/risk/portfolio")
@@ -100,12 +145,40 @@ async def portfolio_risk(db: DatabaseSession) -> dict[str, Any]:
     distribution: dict[str, int] = {
         key: 0 for key in ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
     }
+    ml_distribution: dict[str, int] = {
+        key: 0 for key in ["LOW", "MEDIUM", "HIGH", "CRITICAL"]
+    }
+    cost_buckets: dict[str, int] = {
+        "on-budget": 0,
+        "0-10%": 0,
+        "10-20%": 0,
+        "20-50%": 0,
+        ">50%": 0,
+    }
     ministry_scores: dict[str, list[int]] = defaultdict(list)
     sector_scores: dict[str, list[int]] = defaultdict(list)
     trajectory_points: dict[str, list[int]] = defaultdict(list)
     for project, risk in enriched:
         score = risk["scores"]["overall_risk"]
         distribution[risk["scores"]["risk_level"]] += 1
+        if project.ml_risk_predictions:
+            ml_lvl = str(project.ml_risk_predictions.get("risk_level", "LOW")).upper()
+            if ml_lvl in ml_distribution:
+                ml_distribution[ml_lvl] += 1
+        app_cost = float(project.approved_cost)
+        rev_cost = float(project.revised_cost)
+        growth = ((rev_cost - app_cost) / app_cost * 100) if app_cost > 0 else 0
+        if growth <= 0:
+            cost_buckets["on-budget"] += 1
+        elif growth <= 10:
+            cost_buckets["0-10%"] += 1
+        elif growth <= 20:
+            cost_buckets["10-20%"] += 1
+        elif growth <= 50:
+            cost_buckets["20-50%"] += 1
+        else:
+            cost_buckets[">50%"] += 1
+
         ministry_scores[project.ministry].append(score)
         sector_scores[project.sector].append(score)
         for point in risk["trajectory"]["history"]:
@@ -122,9 +195,15 @@ async def portfolio_risk(db: DatabaseSession) -> dict[str, Any]:
         ]
 
     return {
-        "data_source": SYNTHETIC_LABEL,
+        "data_source": _data_label(projects),
         "risk_distribution": [
             {"level": level, "count": count} for level, count in distribution.items()
+        ],
+        "ml_risk_distribution": [
+            {"level": level, "count": count} for level, count in ml_distribution.items()
+        ],
+        "cost_risk_buckets": [
+            {"bucket": bucket, "count": count} for bucket, count in cost_buckets.items()
         ],
         "portfolio_trend": [
             {"month": month, "risk": round(sum(values) / len(values))}
@@ -160,7 +239,7 @@ async def statistics(db: DatabaseSession) -> dict[str, Any]:
         for project, _ in enriched
     )
     return {
-        "data_source": SYNTHETIC_LABEL,
+        "data_source": _data_label(projects),
         "total_projects": len(enriched),
         "high_risk_projects": sum(
             risk["scores"]["risk_level"] == "HIGH" for _, risk in enriched

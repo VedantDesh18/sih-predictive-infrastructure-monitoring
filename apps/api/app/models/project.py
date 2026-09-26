@@ -9,13 +9,15 @@ from decimal import Decimal
 from sqlalchemy import JSON, Boolean, Date, Index, Numeric, String, Text
 from sqlalchemy.orm import Mapped, mapped_column
 
-from app.models.base import Base, TimestampMixin, UUIDPrimaryKeyMixin
+from app.models.base import Base, TimestampMixin
 
 
-class Project(UUIDPrimaryKeyMixin, TimestampMixin, Base):
+class Project(TimestampMixin, Base):
     """Infrastructure project registered for predictive monitoring."""
 
     __tablename__ = "projects"
+
+    id: Mapped[str] = mapped_column(String(100), primary_key=True)
 
     name: Mapped[str] = mapped_column(String(255), nullable=False)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)

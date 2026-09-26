@@ -54,6 +54,7 @@ alembic/versions/__pycache__/
 
 # ML artifacts (future)
 *.pkl
+!models/paimana_phase2/*.pkl
 *.joblib
 *.parquet
 mlruns/
